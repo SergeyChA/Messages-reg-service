@@ -16,9 +16,7 @@ services:
     build: ./servicedb
     container_name: fastapi
     restart: always
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
-    ports:
-      - "8000:8000"
+    command: uvicorn app.main:app
 
     environment:
       - DATABASE_HOSTNAME=db
@@ -57,7 +55,6 @@ services:
     container_name: rabbitmq
     restart: always
     ports:
-      - "5672:5672"
       - "15672:15672"
     volumes:
       - rabbitmq_data:/data

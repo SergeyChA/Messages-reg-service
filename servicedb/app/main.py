@@ -1,6 +1,5 @@
 import aio_pika
 import asyncio
-import time
 from fastapi import FastAPI
 
 from . import models

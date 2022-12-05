@@ -12,8 +12,6 @@ RUN apt-get update \
 
 COPY . .
 
-EXPOSE 8000
-
 # add entrypoint.sh
 COPY ./entrypoint.sh .
 RUN chmod +x /src/entrypoint.sh
