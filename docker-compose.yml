@@ -1,0 +1,67 @@
+version: "3"
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: tornado
+    restart: always
+    command: python3 main.py
+    ports:
+      - "80:8888"
+    volumes:
+      - ./frontend/:/src/frontend
+    
+  servicedb:
+    build: ./servicedb
+    container_name: fastapi
+    restart: always
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+
+    environment:
+      - DATABASE_HOSTNAME=db
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=db_msg
+      - DATABASE_USERNAME=postgres
+    depends_on:
+      - db
+      - rabbitmq
+      - backend
+
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db_msg
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+  admin:
+    image: adminer
+    container_name: phpAdmin
+    restart: always
+    ports:
+      - "8080:8080"
+
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+      dockerfile: Dockerfile
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/data
+
+volumes:
+  postgres-db:
+  rabbitmq_data:

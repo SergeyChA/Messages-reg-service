@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <form class="decor" action="/post" method="POST">
+      <div class="form-left-decoration"></div>
+      <div class="form-right-decoration"></div>
+      <div class="circle"></div>
+      <div class="form-inner">
+        <h3>Написать нам</h3>
+        <input
+          type="text"
+          required
+          oninvalid="this.setCustomValidity('Поле не может быть пустым или содержат цифры!')"
+          oninput="setCustomValidity('')"
+          placeholder="Фамилия"
+          name="surname"
+          pattern="[A-Za-zА-Яа-яЁё]+"
+          maxlength="30"
+        />
+        <input
+          type="text"
+          required
+          oninvalid="this.setCustomValidity('Поле не может быть пустым или содержат цифры!')"
+          oninput="setCustomValidity('')"
+          placeholder="Имя"
+          name="name"
+          pattern="[A-Za-zА-Яа-яЁё]+"
+          maxlength="30"
+        />
+        <input
+          type="text"
+          required
+          oninvalid="this.setCustomValidity('Поле не может быть пустым или содержат цифры!')"
+          oninput="setCustomValidity('')"
+          placeholder="Отчество"
+          name="patronymic"
+          pattern="[A-Za-zА-Яа-яЁё]+"
+          maxlength="30"
+        />
+        <input
+          type="text"
+          required
+          oninvalid="this.setCustomValidity('Поле не может быть пустым или содержать буквы!')"
+          oninput="setCustomValidity('')"
+          placeholder="Телефон"
+          name="phone"
+          pattern="[0-9]+"
+          maxlength="30"
+        />
+        <textarea
+          required
+          oninvalid="this.setCustomValidity('Поле не может быть пустым!')"
+          oninput="setCustomValidity('')"
+          placeholder="Обращение..."
+          rows="3"
+          name="message"
+          maxlength="255"
+        ></textarea>
+        <input class="button" type="submit" value="Отправить" />
+      </div>
+    </form>
+  </body>
+</html>

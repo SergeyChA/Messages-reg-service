@@ -1,0 +1,2 @@
+tornado==6.2
+aio_pika==8.2.5
