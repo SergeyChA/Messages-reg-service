@@ -1,11 +1,9 @@
-import databases
 import sqlalchemy
+from sqlalchemy.ext.asyncio import create_async_engine
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:password@db:5432/db_msg"
-
-database = databases.Database(SQLALCHEMY_DATABASE_URL)
+SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://postgres:password@db:5432/db_msg"
 
 metadata = sqlalchemy.MetaData()
 
-engine = sqlalchemy.create_engine(SQLALCHEMY_DATABASE_URL)
+engine = create_async_engine(SQLALCHEMY_DATABASE_URL, echo=True)

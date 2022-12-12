@@ -17,7 +17,6 @@ services:
     container_name: fastapi
     restart: always
     command: uvicorn app.main:app
-
     environment:
       - DATABASE_HOSTNAME=db
       - DATABASE_PORT=5432

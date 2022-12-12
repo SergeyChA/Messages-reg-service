@@ -12,10 +12,9 @@ RUN apt-get update \
 
 COPY . .
 
-# add entrypoint.sh
 COPY ./entrypoint.sh .
+
 RUN chmod +x /src/entrypoint.sh
 
-# run entrypoint.sh
 ENTRYPOINT ["/src/entrypoint.sh"]
 
