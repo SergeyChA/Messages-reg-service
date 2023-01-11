@@ -2,6 +2,7 @@
 
 ## Инструменты:
 * Python
+* Asyncio
 * Tornado
 * RabbitMQ
 * FastApi
