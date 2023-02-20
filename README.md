@@ -19,7 +19,7 @@
 
 `localhost:80`
 
-RabbitWQ management:
+RabbitMQ management:
 
 `localhost:15672`<br/>
 
